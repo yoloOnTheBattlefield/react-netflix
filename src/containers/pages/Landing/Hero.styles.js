@@ -12,6 +12,7 @@ export const Hero = styled.div`
   width: 100vw;
   min-height: 100vh;
   background-image: ${image};
+  z-index: 2;
   h1{
     background-image: ${image};
   }

@@ -15,11 +15,18 @@ class Upcoming extends React.Component {
       headerTouched: false
     }
     this.handleExit = this.handleExit.bind(this);
+    this.handleEnter = this.handleEnter.bind(this);
   }
 
   handleExit(){
     this.setState({
       headerTouched: true
+    })
+  }
+
+  handleEnter(){
+    this.setState({
+      headerTouched: false
     })
   }
 
@@ -31,14 +38,14 @@ class Upcoming extends React.Component {
 
     return (
       <FullPage>
-        <Waypoint onLeave={this.handleExit} topOffset={240}>
+        <Waypoint onLeave={this.handleExit} onEnter={this.handleEnter} topOffset={80} >
           <div>
-            <Header>
+            <Header touched={this.state.headerTouched} >
               <h1>UPCOMING</h1>
             </Header>
         </div>
         </Waypoint>
-        <MovieList>
+        <MovieList touched={this.state.headerTouched}>
           {
             !popularMovies ?
             null :

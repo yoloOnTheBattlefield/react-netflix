@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { navHeight } from '../../theme/styles';
+import { navHeight } from '../theme/styles';
 
 export const Nav = styled.nav`
   width: 100%;
@@ -12,7 +12,7 @@ export const Nav = styled.nav`
   z-index: 100;
   display: flex;
   justify-content: center;
-  background: linear-gradient(rgba(4,4,5,1), 90%, rgba(4,4,5,0.8));
+  background: rgba(4,4,5,1);
   transition: 0.5s;
   transform: ${props => props.showNavbar ? 'translatey(0%)' : 'translatey(-100%)'};
 `;
