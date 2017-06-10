@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { navHeight } from '../theme/styles';
+import { navHeight, black, fastTransition, mediumTransition } from '../theme/styles';
 
 export const Nav = styled.nav`
   width: 100%;
@@ -12,37 +12,43 @@ export const Nav = styled.nav`
   z-index: 100;
   display: flex;
   justify-content: center;
-  background: rgba(4,4,5,1);
-  transition: 0.5s;
-  transform: ${props => props.showNavbar ? 'translatey(0%)' : 'translatey(-100%)'};
+  background: ${black};
+  transition: ${mediumTransition};
 `;
 
-//background: linear-gradient(RGBA(33, 32, 37, 0.8), RGBA(33, 32, 37, 0.2));
-
 export const Form = styled.form`
-  width: 40%;
+  width: 90%;
+  max-width: 900px;
   height: 50px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
   margin: auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
+
 `;
 
 export const Input = styled.input`
-  width: 80%;
-  margin: 0 auto;
+  width: 300px;
+  margin-left: 50px;
   border-radius: 35px;
   height: 40px;
   background: RGBA(33, 32, 37, 0.2);
   cursor: pointer;
   color: white;
   padding: 0 20px;
+  padding-left: 30px;
   border: 1px solid rgba(255,255,255, 0.2);
-  transition: 0.3s;
-  text-align: center;
+  transition: ${fastTransition};
+  text-align: left;
+  transform: ${props => props.showInput ? 'translatey(0)' : `translatey(-${navHeight}px)`};
   &:focus{
     border-color: rgba(255,255,255, 0.5);
-    width: 100%;
+    width: 325px;
     outline: none;
   }
 `;
@@ -64,10 +70,10 @@ export const SignIn = styled.div`
   line-height: 100%;
   overflow: hidden;
   cursor: pointer;
-  transition: 0.5s ease-in-out;
+  transition: ${mediumTransition} ease-in-out;
   transform: ${props => props.showButtons ? 'translatex(0)' : 'translatex(100%)'};
   &:before{
-    transition: 0.5s ease-in-out;
+    transition: ${mediumTransition} ease-in-out;
     transition-delay: 0;
     content: '';
     position: absolute;
@@ -80,8 +86,8 @@ export const SignIn = styled.div`
     transform: translatex(90%);
   }
   &:after{
-    transition: 0.2s ease-in;
-    transition-delay: 0.5s;
+    transition: ${fastTransition} ease-in;
+    transition-delay: ${mediumTransition};
     content: '';
     position: absolute;
     background: #D33E43;
@@ -117,8 +123,25 @@ export const Button = styled.div`
   text-align: center;
   z-index: 100;
   cursor: pointer;
-  transition: 0.5s ease-in-out;
+  transition: ${mediumTransition} ease-in-out;
   color: rgba(255, 255, 255, 0.8);
+  &:hover{
+    color: rgba(255, 255, 255, 1);
+  }
+`;
+
+export const SearchIcon = styled.div`
+  width: 25px;
+  height: 25px;
+  color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 25px;
+  cursor: pointer;
+  transition: ${mediumTransition};
+  transform: ${props => props.showSearch ? 'translatey(0)' : `translatey(-${navHeight}px)`};
   &:hover{
     color: rgba(255, 255, 255, 1);
   }

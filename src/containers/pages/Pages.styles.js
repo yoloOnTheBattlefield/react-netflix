@@ -1,19 +1,18 @@
 import styled from 'styled-components';
 
-import { navHeight, black } from '../theme/styles';
+import { navHeight, black, fastTransition, Wrapper } from '../theme/styles';
 
 export const Content = styled.div`
+
 `;
 
-export const FullPage = styled.div`
-  min-height: 100vh;
-  width: 100vw;
-  background: ${black};
+export const Container = Wrapper.extend`
+  min-height: 60vh;
   position: relative;
 `;
 
 export const MovieList = styled.div`
-  transition: 0.2s;
+  transition: ${fastTransition};
   padding-top: 100px;
   width: 90%;
   max-width: 900px;
@@ -24,8 +23,8 @@ export const MovieList = styled.div`
 
 export const Header = styled.div`
   position: ${props => props.touched ? 'fixed' : 'absolute' };
-  top: ${props => props.touched ?  '80px' : '0px'};
-  height: 80px;
+  top: ${props => props.touched ?  `${navHeight}px` : '0px'};
+  height: ${props => props.touched ? '60px' : `${navHeight}px`};
   text-align: left;
   width: 100%;
   left: 0;
@@ -33,11 +32,12 @@ export const Header = styled.div`
   margin: 0 auto;
   background: ${black};
   z-index: 100;
+  overflow: hidden;
   h1{
     width: 90%;
     max-width: 900px;
     margin: 0 auto;
-    font-size: 60px;
+    font-size: ${props => props.touched ? '30px' : '60px'};
     background: linear-gradient( #FF220C, #D33E43);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -1,14 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Waypoint from 'react-waypoint';
-import { fetchUpcomingMovies } from '../../../redux/actions';
+import { Container, MovieList, Header } from '../Pages.styles';
+import MovieCard from '../../components/MovieCard';
+import Loader from '../../components/Loader';
 
 
-import { FullPage, MovieList, Header } from '../Pages.styles';
-import MovieCard from '../../components/MovieCard'
-
-
-class Upcoming extends React.Component {
+class MoviesContainer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -21,35 +18,40 @@ class Upcoming extends React.Component {
   handleExit(){
     this.setState({
       headerTouched: true
-    })
+    });
   }
 
   handleEnter(){
     this.setState({
       headerTouched: false
-    })
+    });
   }
 
-  componentDidMount(){
-    this.props.fetchUpcomingMovies();
-  }
   render(){
-    const { popularMovies } = this.props.popularMovies;
+
+    if(!this.props.movies){
+      return (
+        <Container>
+          <Loader />
+        </Container>
+      )
+    }
+
+    const { headerTouched } = this.state;
+    const { movies, title } = this.props;
 
     return (
-      <FullPage>
+      <Container>
         <Waypoint onLeave={this.handleExit} onEnter={this.handleEnter} topOffset={80} >
           <div>
-            <Header touched={this.state.headerTouched} >
-              <h1>UPCOMING</h1>
+            <Header touched={headerTouched} >
+              <h1>{title.toUpperCase()}</h1>
             </Header>
-        </div>
+          </div>
         </Waypoint>
-        <MovieList touched={this.state.headerTouched}>
+        <MovieList touched={headerTouched}>
           {
-            !popularMovies ?
-            null :
-            popularMovies.map(movie => {
+            movies.map(movie => {
              return (
               <MovieCard
                 key={movie.title}
@@ -62,16 +64,10 @@ class Upcoming extends React.Component {
             })
           }
         </MovieList>
-      </FullPage>
+      </Container>
     )
   }
 }
 
 
-const mapStateToProps = ({ popularMovies }) => {
-  return {
-    popularMovies
-  }
-}
-
-export default connect(mapStateToProps, { fetchUpcomingMovies })(Upcoming);
+export default MoviesContainer;

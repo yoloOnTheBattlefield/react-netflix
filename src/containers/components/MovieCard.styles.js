@@ -11,7 +11,6 @@ export const Card = styled.div`
   background-position: 50%;
   transition: 0.2s;
   &:hover{
-    transform: scale(1.2);
-    box-shadow: 0 0 10px 1px rgba(255,255,255, 0.5);
+    transform: scale(1.1);
   }
 `;
