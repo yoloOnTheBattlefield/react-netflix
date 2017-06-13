@@ -12,7 +12,9 @@ import  {
   ModalDescription,
   Review,
   Paragraph,
-  ReleaseDate
+  ReleaseDate,
+  ButtonGroup,
+  Button
 } from './Modal.styles';
 
 const Modal = ({ movie, showModal, clickedMovie }) => {
@@ -35,7 +37,7 @@ const Modal = ({ movie, showModal, clickedMovie }) => {
         <ModalContent>
           <Card
             poster={`https://image.tmdb.org/t/p/w300${poster_path}`}
-            style={{margin: '0 25px'}} 
+            style={{margin: '0 25px'}}
           />
           <ModalDescription>
             {
@@ -46,6 +48,11 @@ const Modal = ({ movie, showModal, clickedMovie }) => {
               <Paragraph>{overview}</Paragraph>
               <ReleaseDate>{release_date}</ReleaseDate>
             </Review>
+            <ButtonGroup>
+              <Button background='#0F0F0F' color='white'>Find Out more</Button>
+              <Button background='#2274A5' color='white'>Twitter</Button>
+              <Button background='#00CC66' color='white'>Save</Button>
+            </ButtonGroup>
           </ModalDescription>
         </ModalContent>
       </ModalWrapper>

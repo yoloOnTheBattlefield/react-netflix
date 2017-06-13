@@ -17,6 +17,8 @@ export const Input = styled.input`
   cursor: pointer;
   color: white;
   padding: 0 20px;
+  font-weight: 200;
+  font-size: 25px;
   border: 0;
   border-bottom: 5px solid rgba(255,255,255, 0.2);
   box-sizing: border-box;

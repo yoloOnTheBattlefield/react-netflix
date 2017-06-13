@@ -13,6 +13,7 @@ class Landing extends React.Component{
   componentDidMount(){
     this.props.fetchUpcomingMovies();
     this.props.fetchTheaterMovies();
+    window.addEventListener("scroll", (e) => console.log(e));
   }
 
   render(){
