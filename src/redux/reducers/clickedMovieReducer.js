@@ -1,7 +1,7 @@
 import { CLICKED_MOVIE } from '../constants';
 
 const intialState = {
-  movie: {},
+  movie: '',
   showModal: false
 }
 

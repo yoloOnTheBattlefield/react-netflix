@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { black, maxWidth } from '../../theme/styles';
+import { black, maxWidth, gradientRed } from '../../theme/styles';
 
 export const MovieList = styled.div`
   width: 100%;
@@ -24,7 +24,7 @@ export const MovieListHeader = styled.div`
   text-align: left;
   h1{
     fontSize: 40px;
-    background: linear-gradient( #FF220C, #D33E43);
+    background: ${gradientRed};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

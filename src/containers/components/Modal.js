@@ -1,32 +1,65 @@
 import React from 'react';
-import { Popup, Header, Image, Modal, Rating } from 'semantic-ui-react';
-import { PosterImage } from './Modal.styles';
+import { connect } from 'react-redux';
+import { clickedMovie } from '../../redux/actions/index';
+import { Rating } from 'semantic-ui-react';
+import { Card } from './Card.styles';
+import  {
+  ModalContainer,
+  Trigger,
+  ModalWrapper,
+  ModalHeader,
+  ModalContent,
+  ModalDescription,
+  Review,
+  Paragraph,
+  ReleaseDate
+} from './Modal.styles';
 
-export default ({ clickedMovieInfo, showModal, clickedMovie }) => {
+const Modal = ({ movie, showModal, clickedMovie }) => {
   const {
     title,
     poster_path,
     vote_average,
     overview,
     release_date
-  } = clickedMovieInfo
+  } = movie;
 
+  if(!movie){
+    return null;
+  }
   return (
-    <Modal open={showModal} onClose={() => clickedMovie(null, false)}>
-      <Modal.Header>{title}</Modal.Header>
-      <Modal.Content image>
-        <PosterImage poster={`https://image.tmdb.org/t/p/w300${poster_path}`} />
-        <Modal.Description>
-          <Header>
+    <ModalContainer showModal={showModal} >
+      <Trigger showModal={showModal} onClick={() => clickedMovie(movie = '', false)} />
+      <ModalWrapper>
+        <ModalHeader>{title}</ModalHeader>
+        <ModalContent>
+          <Card
+            poster={`https://image.tmdb.org/t/p/w300${poster_path}`}
+            style={{margin: '0 25px'}} 
+          />
+          <ModalDescription>
             {
               !vote_average ? <h3>No Ratings yet</h3> :
-              <Rating defaultRating={Math.round(vote_average / 2)} maxRating={10 / 2} />
+              <Rating defaultRating={Math.round(vote_average / 2)} maxRating={5} />
             }
-          </Header>
-          <p>{overview}</p>
-          <p>{release_date}</p>
-        </Modal.Description>
-      </Modal.Content>
-    </Modal>
+            <Review>
+              <Paragraph>{overview}</Paragraph>
+              <ReleaseDate>{release_date}</ReleaseDate>
+            </Review>
+          </ModalDescription>
+        </ModalContent>
+      </ModalWrapper>
+    </ModalContainer>
   )
 }
+
+const mapStateToProps = ({ clickedMovie }) => ({
+  showModal: clickedMovie.showModal
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  clickedMovie: (movie, showModal) =>  dispatch(clickedMovie(movie, showModal))
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal)
