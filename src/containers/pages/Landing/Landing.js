@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUpcomingMovies } from '../../../redux/actions';
-import MoviesContainer from './MoviesContainer';
+import { fetchUpcomingMovies, fetchTheaterMovies } from '../../../redux/actions';
 import Hero from './Hero';
+import MoviesContainer from './MoviesContainer';
+import values from 'lodash/values';
 
 import { Content } from '../Pages.styles';
 
@@ -10,23 +11,27 @@ class Landing extends React.Component{
 
   componentDidMount(){
     this.props.fetchUpcomingMovies();
+    this.props.fetchTheaterMovies();
   }
 
   render(){
-    const { upcomingMovies } = this.props.upcomingMovies;
+    const collections = values(this.props.collections);
     return(
       <Content>
         <Hero />
-        <MoviesContainer title={'Upcoming'} movies={upcomingMovies}/>
+        <MoviesContainer collections={collections} />
       </Content>
     )
   }
 }
 
-const mapStateToProps = ({ upcomingMovies }) => {
+const mapStateToProps = ({ collections }) => {
   return {
-    upcomingMovies
+    collections
   }
 }
 
-export default connect(mapStateToProps, { fetchUpcomingMovies })(Landing);
+export default connect(mapStateToProps, {
+  fetchUpcomingMovies,
+  fetchTheaterMovies
+})(Landing);

@@ -1,4 +1,4 @@
-import styled, { keyframes, extend } from 'styled-components';
+import styled from 'styled-components';
 import { Container } from '../Pages.styles';
 import { mediumTransition, mutedWhite } from '../../theme/styles';
 

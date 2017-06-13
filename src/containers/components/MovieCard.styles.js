@@ -9,8 +9,5 @@ export const Card = styled.div`
   background: url(${props => props.poster});
   background-size: cover;
   background-position: 50%;
-  transition: 0.2s;
-  &:hover{
-    transform: scale(1.1);
-  }
+  cursor: pointer;
 `;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const navHeight = 80;
+export const maxWidth = '900px'
+export const navHeight = 60;
 
 export const black = '#0A0908';
 
