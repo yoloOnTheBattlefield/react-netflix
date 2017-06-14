@@ -14,6 +14,7 @@ export const ModalContainer = styled.div`
 export const Trigger = ModalContainer.extend`
   background: '';
 `;
+
 export const  ModalWrapper= styled.div`
   width: 75%;
   height: 400px;
@@ -26,6 +27,7 @@ export const  ModalWrapper= styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 export const  ModalHeader = styled.div`
   height: 75px;
   display: flex;
@@ -33,22 +35,27 @@ export const  ModalHeader = styled.div`
   align-items: center;
   font-size: 40px;
 `;
+
 export const  ModalContent = styled.div`
   display: flex;
 `;
+
 export const  ModalDescription = styled.div`
   width: 50%;
   margin: 0 auto;
 `;
+
 export const  Rating = styled.div`
 
 `;
 export const  Review = styled.div`
 
 `;
+
 export const  Paragraph = styled.div`
 
 `;
+
 export const  ReleaseDate = styled.div`
 
 `;
