@@ -23,6 +23,6 @@ const mapDispatchToProps = (dispatch) => ({
   clickedMovie: (movie, showModal) => {
     dispatch(clickedMovie(movie, showModal))
   }
-})
+});
 
 export default connect(null, mapDispatchToProps)(MovieCard);

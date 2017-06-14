@@ -7,6 +7,7 @@ import Landing from './containers/pages/Landing/Landing';
 import Browse from './containers/pages/Browse/Browse';
 import SignIn from './containers/pages/SignIn/SignIn';
 import NotFound from './containers/pages/NotFound/NotFound';
+import Movie from './containers/pages/Movie/Movie';
 
 class App extends Component {
   render() {
@@ -17,7 +18,7 @@ class App extends Component {
             <Navbar />
             <Switch>
               <Route exact path='/' component={Landing} />
-              <Route path='/browse' component={Browse} />
+              <Route path='/movie/:id' component={Movie} />
               <Route path='/signin' component={SignIn} />
               <Route component={NotFound} />
             </Switch>

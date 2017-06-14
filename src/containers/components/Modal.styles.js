@@ -16,7 +16,8 @@ export const Trigger = ModalContainer.extend`
 `;
 
 export const  ModalWrapper= styled.div`
-  width: 75%;
+  width: 90%;
+  max-width: 900px;
   height: 400px;
   position: absolute;
   top: 50%;
@@ -76,4 +77,7 @@ export const Button = styled.div`
   text-align: center;
   align-items: center;
   line-height: 50px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  padding: 0 5px;
 `;

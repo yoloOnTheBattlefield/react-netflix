@@ -13,17 +13,16 @@ class Landing extends React.Component{
   componentDidMount(){
     this.props.fetchUpcomingMovies();
     this.props.fetchTheaterMovies();
-    window.addEventListener("scroll", (e) => console.log(e));
   }
 
   render(){
     const collections = values(this.props.collections, clickedMovie);
-    const { clickedMovie, showModal } = this.props;
+    const { clickedMovie, showModal, match } = this.props;
     return(
       <Content>
         <Hero />
           <MoviesContainer collections={collections} />
-          <Modal movie={clickedMovie} showModal={showModal} />
+          <Modal match={match} movie={clickedMovie} showModal={showModal} />
       </Content>
     )
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { clickedMovie } from '../../redux/actions/index';
 import { Rating } from 'semantic-ui-react';
 import { Card } from './Card.styles';
@@ -17,13 +18,14 @@ import  {
   Button
 } from './Modal.styles';
 
-const Modal = ({ movie, showModal, clickedMovie }) => {
+const Modal = ({ movie, showModal, clickedMovie, match }) => {
   const {
     title,
     poster_path,
     vote_average,
     overview,
-    release_date
+    release_date,
+    id
   } = movie;
 
   if(!movie){
@@ -31,7 +33,7 @@ const Modal = ({ movie, showModal, clickedMovie }) => {
   }
   return (
     <ModalContainer showModal={showModal} >
-      <Trigger showModal={showModal} onClick={() => clickedMovie(movie = '', false)} />
+      <Trigger showModal={showModal} onClick={() => clickedMovie('', false)} />
       <ModalWrapper>
         <ModalHeader>{title}</ModalHeader>
         <ModalContent>
@@ -49,9 +51,13 @@ const Modal = ({ movie, showModal, clickedMovie }) => {
               <ReleaseDate>{release_date}</ReleaseDate>
             </Review>
             <ButtonGroup>
-              <Button background='#0F0F0F' color='white'>Find Out more</Button>
-              <Button background='#2274A5' color='white'>Twitter</Button>
-              <Button background='#00CC66' color='white'>Save</Button>
+              <Button background='#0F0F0F' color='white'>
+                <Link to={`/movie/${id}`} onClick={() => clickedMovie('', false)}>
+                  FIND OUT MORE
+                </Link>
+              </Button>
+              <Button background='#2274A5' color='white'>TWITTER</Button>
+              <Button background='#00CC66' color='white'>SAVE</Button>
             </ButtonGroup>
           </ModalDescription>
         </ModalContent>

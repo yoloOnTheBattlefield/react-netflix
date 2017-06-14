@@ -17,9 +17,6 @@ class Navbar extends React.Component{
             alignItems: 'center'
         }}>
           <NavLink exact to='/'>
-            <Button>HOME</Button>
-          </NavLink>
-          <NavLink to='/browse'>
             <Button>BROWSE</Button>
           </NavLink>
           <SearchForm />

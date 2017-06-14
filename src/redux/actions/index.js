@@ -4,7 +4,8 @@ import {
   FETCH_UPCOMING_MOVIES,
   FETCH_IN_THEATRES,
   SEARCH_MOVIE,
-  CLICKED_MOVIE
+  CLICKED_MOVIE,
+  GET_MOVIE
 } from '../constants';
 
 const API_KEY = 'api_key=d2788c89c4f55d19e63381c2d04593df';
@@ -39,10 +40,19 @@ export const searchMovie = (query) => {
 }
 
 export const clickedMovie = (movie, showModal) => {
-  console.log('movie received: ', movie, showModal);
   return {
       type: CLICKED_MOVIE,
       movie,
       showModal
     }
 }
+
+export const getMovie = (movieId) => {
+  const request = axios.get(`${ROOT_URL}/movie/${movieId}?${API_KEY}`);
+  return {
+    type: GET_MOVIE,
+    payload: request
+  }
+}
+
+//https://api.themoviedb.org/3/movie/297762?api_key=d2788c89c4f55d19e63381c2d04593df&language=en-US
