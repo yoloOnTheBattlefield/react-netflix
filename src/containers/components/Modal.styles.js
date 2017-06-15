@@ -44,13 +44,17 @@ export const  ModalContent = styled.div`
 export const  ModalDescription = styled.div`
   width: 50%;
   margin: 0 auto;
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const  Rating = styled.div`
 
 `;
 export const  Review = styled.div`
-
+  height: 50%;
 `;
 
 export const  Paragraph = styled.div`
@@ -66,7 +70,8 @@ export const ButtonGroup = styled.div`
   height: 50px;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-bottom: 0;
+  align-self: flex-end;
 `;
 
 export const Button = styled.div`

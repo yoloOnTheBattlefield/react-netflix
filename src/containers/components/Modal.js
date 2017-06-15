@@ -44,7 +44,13 @@ const Modal = ({ movie, showModal, clickedMovie, match }) => {
           <ModalDescription>
             {
               !vote_average ? <h3>No Ratings yet</h3> :
-              <Rating defaultRating={Math.round(vote_average / 2)} maxRating={5} />
+              <Rating
+                disabled
+                icon='star'
+                size='large'
+                defaultRating={Math.round(vote_average / 2)}
+                style={{width: '50%', padding: '25px 0'}} 
+                maxRating={5} />
             }
             <Review>
               <Paragraph>{overview}</Paragraph>

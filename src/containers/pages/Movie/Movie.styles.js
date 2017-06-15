@@ -4,36 +4,30 @@ import {
   navHeight,
   black,
   gradientRed
-} from '../../theme/styles'
+} from '../../theme/styles';
+
+const height = '600px';
+const height2 = navHeight;
+
+/***************************************/
+/***************************************/
+
+/***************************************/
 
 export const Header = styled.div`
   width: 100%;
-  height: calc(400px +  ${navHeight}px);
+  height: ${height};
   background: ${black};
-  display: flex;
   position: relative;
-  padding-top: ${navHeight}px;
+  overflow: hidden;
 `;
 
-export const HeaderWrapper = styled.div`
-  width: 100%;
-  max-width: 900px;
-  height: 400px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  position: relative;
+export const HeaderWrapper = Header.extend`
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
-export const Wrapper = styled.div`
-  width: 100%;
-  max-width: 900px;
-  height: 400px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  position: relative;
-`;
 
 export const Backdrop = styled.div`
   width: 100%;
@@ -44,68 +38,88 @@ export const Backdrop = styled.div`
   background: url(${props => props.backdrop});
   background-size: cover;
   background-position: 50%;
-  filter: blur(1px);
+  filter: blur(2px);
 `;
+
+export const Wrapper = styled.div`
+  width: 100%;
+  max-width: 900px;
+  height: ${height};
+  margin: 0 auto;
+  position: relative;
+`;
+
 
 export const Poster = styled.div`
-  width: 200px;
-  height: 300px;
-  background: blue;
-  margin-left: ${navHeight}px;
-  margin-right: ${navHeight}px;
-  margin-bottom: ${navHeight}px;
-  background: url(${props => props.poster});
+  width: 300px;
+  height: 400px;
+  position: ${props => props.fixed ? 'fixed' : 'absolute'};
+  top: 100px;
+  margin: auto;
   background-size: cover;
   background-position: 50%;
-  box-shadow: 0 8px 6px -6px ${black};
-  align-self: flex-end;
-`;
-
-export const Container = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background: #ECE2D0;
-  height: 100%;
-  min-height: calc(100vh - 400px);
+  box-shadow: 0 8px 50px -50px ${black};
+  border-radius: 5px;
+  transform: ${props => props.mounted ? 'translatey(0px) scale(1)' : 'translatey(50px) scale(1.1)'};
+  opacity: ${props => props.mounted ? 1 : 0.8 };
+  transition: all 0.5s ease-in-out;
 `;
 
 export const MovieTagline = styled.div`
   z-index: 5;
   width: 100%;
-  height: ${navHeight}px;
+  height: ${navHeight * 1.5}px;
   background: ${black};
-  margin: 0 auto;
-  padding: 0px;
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
+  top: ${props => props.alternate ? '0px' : '100%' };
+  transform: ${props => props.mounted ? `translatey(-${navHeight}px)` : `translatey(${navHeight}px)` };
+  transition: all 0.75s ease-in-out;
+  position: absolute;
+  overflow: hidden;
+  display: block;
+  position: ${props => props.alternate ? 'fixed' : 'absolute' };
 `;
 
 export const Title = styled.div`
-  height: ${navHeight}px;
+  height: ${navHeight * 1.5}px;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
   padding: 0 ${navHeight}px;
   display: flex;
   justify-content: space-between;
+  position: absolute;
+  top: ${props => !props.alternate ? 0 : '-100%' };
+  transition: 0.2s;
   h1{
     height: 100%;
     font-size: 40px;
-    line-height: ${navHeight}px;
+    line-height: ${navHeight * 1.5}px;
     align-items: center;
-    color: #ECE2D0;
-  }
-  h3{
-    height: 100%;
-    font-size: 20px;
-    line-height: ${navHeight}px;
-    text-align: right;
-    align-items: center;
-    margin: 0;
     background: ${gradientRed};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+`;
+
+export const TitleAlternate = Title.extend`
+  top: ${props => props.alternate ? 0 : `${navHeight * 1.5}px`  };
+  h1{
+    font-size: 30px;
+  }
+`;
+
+
+/***************************************/
+/***************************************/
+
+/***************************************/
+
+export const Container = styled.div`
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: ${black};
+  height: 200vh;
+  min-height: calc(100vh - 400px);
 `;

@@ -1,22 +1,23 @@
 import React from 'react';
+import Waypoint from 'react-waypoint';
 import { connect } from 'react-redux';
 import { Rating } from 'semantic-ui-react';
 import { getMovie } from '../../../redux/actions/index';
 import { Content } from '../Pages.styles';
 import Loader from '../../components/Loader';
 import {
-  Header,
-  HeaderWrapper,
-  Wrapper,
-  Backdrop,
-  Poster,
-  Title,
   Container,
-  MovieTagline
 } from './Movie.styles';
+import MovieHeader from './MovieHeader';
 
 
 class Movie extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      alternate: false
+    }
+  }
   componentDidMount(){
     this.props.getMovie(this.props.match.params.id)
   }
@@ -32,23 +33,10 @@ class Movie extends React.Component {
     console.log(movie)
     return(
       <Content>
-        <Header>
-          <HeaderWrapper>
-            <Backdrop backdrop={`https://image.tmdb.org/t/p/w1000${movie.backdrop_path}`} />
-            <Wrapper>
-              <Poster poster={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} />
+          <MovieHeader movie={movie} alternate={this.state.alternate} />
+          <Container>
 
-            </Wrapper>
-          </HeaderWrapper>
-        </Header>
-        <Container>
-          <MovieTagline>
-            <Title>
-              <h1>{movie.title}</h1>
-              <h3>{movie.tagline}</h3>
-            </Title>
-          </MovieTagline>
-        </Container>
+          </Container>
       </Content>
     )
   }
