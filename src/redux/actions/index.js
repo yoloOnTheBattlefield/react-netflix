@@ -54,5 +54,3 @@ export const getMovie = (movieId) => {
     payload: request
   }
 }
-
-//https://api.themoviedb.org/3/movie/297762?api_key=d2788c89c4f55d19e63381c2d04593df&language=en-US
