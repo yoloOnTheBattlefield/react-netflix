@@ -1,18 +1,23 @@
+/*
+  this component renders the upcoming and the in theatres objects from the redux state
+  from those objects it will map over every item in the results array and render a list of movie cards or posters
+  pretty basic stuff but it just looks complicated :(
+*/
+
 import React from 'react';
 import { StickyContainer, Sticky } from 'react-sticky';
-import {  MovieList, MovieListHeader } from './MoviesContainer.styles';
-import { black } from '../../theme/styles';
-import MovieCard from '../../components/MovieCard';
-import Loader from '../../components/Loader';
+import {
+  MovieListHeader,
+  MovieList,
+} from './MoviesContainer.styles';
+import MovieCard from './MovieCard';
 
 
-class MoviesContainer extends React.Component {
-  render(){
-    const { collections } = this.props;
+const MoviesContainer = ({ collections }) => {
     if(!collections){
       return (
         <div>
-          <Loader />
+          <h2>Loading...</h2>
         </div>
       )
     }
@@ -23,9 +28,8 @@ class MoviesContainer extends React.Component {
         collections.map((item, i) => {
           return (
             <StickyContainer key={i} style={{
-                background: black,
                 width: '100%',
-                margin: '0 auto'
+                margin: '0 auto',
               }}
             >
               <Sticky>
@@ -36,6 +40,8 @@ class MoviesContainer extends React.Component {
                           ...style,
                           zIndex: 2,
                           width: '100%',
+                          background: 'white',
+                          boxShadow: 'rgba(0, 0, 0, 0.1) -3px 4px 10px 1px'
                         }}
                       >
                         <MovieListHeader>
@@ -48,9 +54,9 @@ class MoviesContainer extends React.Component {
               </Sticky>
               <MovieList>
                 {
-                  item.results.map(result => {
+                  item.results.map(movie => {
                     return (
-                      <MovieCard key={result.poster_path} movie={result} />
+                      <MovieCard  key={movie.poster_path} movie={movie} />
                     )
                   })
                 }
@@ -59,9 +65,8 @@ class MoviesContainer extends React.Component {
           )
         })
       }
-    </div>
+      </div>
     )
-  }
 }
 
 export default MoviesContainer;

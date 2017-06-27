@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const maxWidth = '900px'
 export const navHeight = 60;
 
-export const black = '#0A0908';
+export const black = '#0E1116';
 export const mutedWhite = 'rgba(255,255,255,0.8)';
 export const white = 'rgba(255,255,255,1)';
 export const gradientRed = 'linear-gradient( #FF220C, #D33E43)';

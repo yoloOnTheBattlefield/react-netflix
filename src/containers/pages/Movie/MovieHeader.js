@@ -32,33 +32,31 @@ export default class MovieHeader extends React.Component{
   }
 
   render(){
-    const { movie, alternate } = this.props;
+    const { movie } = this.props;
     return (
       <Header>
         <Waypoint
           onEnter={() => this.setState({fixed: this.state.fixed ? false : true})}
           onLeave={() => this.setState({fixed: this.state.fixed ? false : true})}
-          />
+        />
         <HeaderWrapper>
             <Backdrop
               backdrop={`https://image.tmdb.org/t/p/w1000${movie.backdrop_path}`} />
             <Wrapper>
-                <Poster
-                  mounted={this.state.mounted}
-                  fixed={this.state.fixed}
-                  >
-                    <AtvImg layers={[`https://image.tmdb.org/t/p/w500${movie.poster_path}`]}style={{ width: 300, height: 400 }} />
-                </Poster>
+              <Poster
+                mounted={this.state.mounted}
+                fixed={this.state.fixed}
+                >
+                  <AtvImg
+                    layers={[`https://image.tmdb.org/t/p/w500${movie.poster_path}`]}
+                    style={{ width: 300, height: 400 }} />
+              </Poster>
             </Wrapper>
         </HeaderWrapper>
-      <MovieTagline mounted={this.state.mounted} alternate={alternate}>
-        <Title alternate={alternate}>
-            <h1>{movie.title}</h1>
-          </Title>
-          <TitleAlternate alternate={alternate}>
+        <MovieTagline mounted={this.state.mounted}>
+          <Title>
             <h1>{movie.tagline}</h1>
-          </TitleAlternate>
-          {/**/}
+          </Title>
         </MovieTagline>
       </Header>
     )

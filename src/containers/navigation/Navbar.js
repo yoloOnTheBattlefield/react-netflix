@@ -13,16 +13,12 @@ class Navbar extends React.Component{
             maxWidth: 900,
             margin: '0 auto',
             display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
         }}>
           <NavLink exact to='/'>
             <Button>BROWSE</Button>
           </NavLink>
           <SearchForm />
-          <NavLink to='/signin'>
-            <Button>SIGN IN</Button>
-          </NavLink>
         </div>
       </Nav>
     )

@@ -18,6 +18,8 @@ export const Header = styled.div`
   width: 100%;
   height: ${height};
   background: ${black};
+  background: white;
+  background: white;
   position: relative;
   overflow: hidden;
 `;
@@ -70,13 +72,14 @@ export const MovieTagline = styled.div`
   width: 100%;
   height: ${navHeight * 1.5}px;
   background: ${black};
+  background: white;
   top: ${props => props.alternate ? '0px' : '100%' };
-  transform: ${props => props.mounted ? `translatey(-${navHeight}px)` : `translatey(${navHeight}px)` };
+  transform: ${props => props.mounted ? `translatey(-${navHeight * 1.5}px)` : `translatey(${navHeight * 1.5}px)`};
   transition: all 0.75s ease-in-out;
   position: absolute;
   overflow: hidden;
   display: block;
-  position: ${props => props.alternate ? 'fixed' : 'absolute' };
+  position: ${props => props.alternate ? 'fixed' : 'absolute'};
 `;
 
 export const Title = styled.div`
@@ -84,15 +87,17 @@ export const Title = styled.div`
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 ${navHeight}px;
+  left: 0;
+  right: 0;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   position: absolute;
-  top: ${props => !props.alternate ? 0 : '-100%' };
+  top: ${props => !props.alternate ? 0 : '-100%'};
   transition: 0.2s;
   h1{
     height: 100%;
-    font-size: 40px;
+    font-size: 25px;
     line-height: ${navHeight * 1.5}px;
     align-items: center;
     background: ${gradientRed};
@@ -102,7 +107,7 @@ export const Title = styled.div`
 `;
 
 export const TitleAlternate = Title.extend`
-  top: ${props => props.alternate ? 0 : `${navHeight * 1.5}px`  };
+  top: ${props => props.alternate ? 0 : `${navHeight * 1.5}px`};
   h1{
     font-size: 30px;
   }
@@ -120,6 +125,5 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   background: ${black};
-  height: 200vh;
-  min-height: calc(100vh - 400px);
+  background: white;
 `;

@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUpcomingMovies, fetchTheaterMovies } from '../../../redux/actions';
 import Hero from './Hero';
 import MoviesContainer from './MoviesContainer';
-import Modal from '../../components/Modal'
-import values from 'lodash/values';
+import _values from 'lodash/values';
 
 import { Content } from '../Pages.styles';
 
@@ -16,20 +15,19 @@ class Landing extends React.Component{
   }
 
   render(){
-    const collections = values(this.props.collections, clickedMovie);
-    const { clickedMovie, showModal, match } = this.props;
+    const collections = _values(this.props.collections, selectedMovie);
+    const { selectedMovie, showModal } = this.props;
     return(
       <Content>
-        <Hero />
-          <MoviesContainer collections={collections} />
-          <Modal match={match} movie={clickedMovie} showModal={showModal} />
+        {/*<Hero />*/}
+        <MoviesContainer collections={collections} />
       </Content>
     )
   }
 }
-const mapStateToProps = ({ collections, clickedMovie }) => ({
-  clickedMovie: clickedMovie.movie,
-  showModal: clickedMovie.showModal,
+const mapStateToProps = ({ collections, selectedMovie }) => ({
+  selectedMovie: selectedMovie.movie,
+  showModal: selectedMovie.showModal,
   collections
 });
 

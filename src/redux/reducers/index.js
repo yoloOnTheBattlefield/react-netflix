@@ -4,7 +4,8 @@ import inTheatres from './theatreMoviesReducer';
 import searchMovies from './searchMoviesReducer';
 import getMovie from './getMovieReducer';
 
-import clickedMovie from './clickedMovieReducer';
+import selectedMovie from './selectedMovieReducer';
+import suggestions from './autosuggestionReducer';
 
 const collections = combineReducers({
   upcomingMovies,
@@ -14,6 +15,7 @@ const collections = combineReducers({
 export default combineReducers({
   searchMovies,
   collections,
-  clickedMovie,
-  getMovie
+  selectedMovie,
+  getMovie,
+  suggestions
 });

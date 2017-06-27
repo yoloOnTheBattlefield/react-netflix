@@ -4,16 +4,19 @@ import {
   FETCH_UPCOMING_MOVIES,
   FETCH_IN_THEATRES,
   SEARCH_MOVIE,
-  CLICKED_MOVIE,
-  GET_MOVIE
+  SELECTED_MOVIE,
+  GET_MOVIE,
+  UPDATE_INPUT_VALUE,
+  CLEAR_SUGGESTIONS,
+  LOAD_SUGGESTIONS_BEGIN,
+  UPDATE_SUGGESTIONS,
 } from '../constants';
-
-const API_KEY = 'api_key=d2788c89c4f55d19e63381c2d04593df';
-const ROOT_URL = `https://api.themoviedb.org/3`;
-
 
 var date = new Date();
 var currentYear = date.getFullYear();
+
+const API_KEY = 'api_key=d2788c89c4f55d19e63381c2d04593df';
+const ROOT_URL = `https://api.themoviedb.org/3`;
 
 export const fetchUpcomingMovies = () => {
   const request = axios.get(`${ROOT_URL}/movie/upcoming?${API_KEY}`);
@@ -31,26 +34,56 @@ export const fetchTheaterMovies = () => {
   }
 }
 
-export const searchMovie = (query) => {
-  const request = axios.get(`${ROOT_URL}/search/movie?${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`);
+export const selectedMovie = (movie, showModal) => {
   return {
-    type: SEARCH_MOVIE,
-    payload: request
-  }
-}
-
-export const clickedMovie = (movie, showModal) => {
-  return {
-      type: CLICKED_MOVIE,
+      type: SELECTED_MOVIE,
       movie,
       showModal
     }
 }
 
-export const getMovie = (movieId) => {
+export const getMovieById = (movieId) => {
   const request = axios.get(`${ROOT_URL}/movie/${movieId}?${API_KEY}`);
   return {
     type: GET_MOVIE,
     payload: request
   }
+}
+
+/*
+* Autosuggest
+*/
+
+export const loadSuggestions = (query) => {
+  const request = axios.get(`${ROOT_URL}/search/movie?${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`);;
+  return dispatch =>  {
+    dispatch(loadSuggestionsBegin())
+    dispatch(updateSuggestions(request))
+  };
+}
+
+export const updateInputValue = (value) => {
+  return {
+    type: UPDATE_INPUT_VALUE,
+    value
+  };
+}
+
+export const clearSuggestions = () => {
+  return {
+    type: CLEAR_SUGGESTIONS
+  };
+}
+
+export const loadSuggestionsBegin = () => {
+  return {
+    type: LOAD_SUGGESTIONS_BEGIN
+  };
+}
+
+const updateSuggestions = (data) => {
+  return {
+    type: UPDATE_SUGGESTIONS,
+    payload: data
+  };
 }

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-import { navHeight, black, fastTransition } from '../theme/styles';
+import { navHeight } from '../theme/styles';
+import { phone} from '../theme/sizes';
 
 export const Nav = styled.nav`
   width: 100%;
@@ -12,7 +13,6 @@ export const Nav = styled.nav`
   z-index: 100;
   display: flex;
   justify-content: center;
-  background: ${black};
 `;
 
 export const Button = styled.div`
@@ -23,9 +23,7 @@ export const Button = styled.div`
   font-size: 25px;
   text-align: center;
   cursor: pointer;
-  transition: ${fastTransition};
-  color: rgba(255, 255, 255, 0.8);
-  &:hover{
-    color: rgba(255, 255, 255, 1);
+  @media (max-width: ${phone}px){
+    display: none;
   }
 `;
