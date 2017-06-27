@@ -1,0 +1,25 @@
+{
+  "name": "react-netflix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoloOnTheBattlefield/react-netflix.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yoloOnTheBattlefield/react-netflix/issues"
+  },
+  "homepage": "https://github.com/yoloOnTheBattlefield/react-netflix#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongoose": "^4.11.0",
+    "nodemon": "^1.11.0"
+  },"scripts": {
+    "start": "node index.js"
+  }
+}

@@ -10,6 +10,14 @@ import NotFound from './containers/pages/NotFound/NotFound';
 import Movie from './containers/pages/Movie/Movie';
 
 class App extends Component {
+  fetchApi = () => {
+    fetch('api/')
+      .then(data => console.log(data.json()))
+  }
+
+  componentDidMount(){
+    this.fetchApi();
+  }
   render() {
     return (
       <div className="App">
