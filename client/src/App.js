@@ -11,8 +11,9 @@ import Movie from './containers/pages/Movie/Movie';
 
 class App extends Component {
   fetchApi = () => {
-    fetch('api/')
-      .then(data => console.log(data.json()))
+    fetch('/api')
+      .then(data => data.json())
+      .then(message => console.log(message))
   }
 
   componentDidMount(){
