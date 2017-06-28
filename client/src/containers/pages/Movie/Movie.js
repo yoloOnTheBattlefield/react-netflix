@@ -1,5 +1,4 @@
 import React from 'react';
-import Waypoint from 'react-waypoint';
 import { connect } from 'react-redux';
 import { Rating } from 'semantic-ui-react';
 import { getMovieById } from '../../../redux/actions/index';

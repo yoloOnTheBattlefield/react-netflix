@@ -46,12 +46,13 @@ class SearchForm extends React.Component{
 
       return (
         <div style={{
-            position: 'absolute',
+            position: 'relative',
             left: 0,
             right: 0,
             margin: '0 auto',
             display: 'flex',
-            width: 400
+            width: '75%',
+            height: 90
           }}>
             <FontAwesome className='search' name='search' />
             <Autosuggest

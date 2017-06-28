@@ -28,17 +28,15 @@ export const MovieListHeader = styled.div`
   padding: 0px;
   display: flex;
   align-items: center;
+  text-align: center;
   h1{
-    font-size: 40px;
+    margin: 0 auto;
     background: ${gradientRed};
+    font-size: 32px;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   @media (max-width: ${phone}px){
-    height: 65px;
-    h1{
-      margin: 0 auto;
-      font-size: 28px;
-    }
+    height: 80px;
   }
 `;

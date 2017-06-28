@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUpcomingMovies, fetchTheaterMovies } from '../../../redux/actions';
-import Hero from './Hero';
 import MoviesContainer from './MoviesContainer';
 import _values from 'lodash/values';
 
@@ -19,7 +18,6 @@ class Landing extends React.Component{
     const { selectedMovie, showModal } = this.props;
     return(
       <Content>
-        {/*<Hero />*/}
         <MoviesContainer collections={collections} />
       </Content>
     )

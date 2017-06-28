@@ -8,10 +8,12 @@
 
 
 .react-autosuggest__container {
-  position: relative;
-  width: 300px;
+  position: absolute;
+  width: 100%;
   height: 50px;
-  margin: 0 auto;
+  top: 0;
+  bottom: 0;
+  margin: auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -25,49 +27,34 @@
   padding: 0 20px;
   font-weight: 300;
   font-size: 20px;
-  border: 0;
-  border-bottom: 1px solid;
-  border-color: rgba(0,0,0, 0);
-  box-sizing: border-box;
-  transition: 0.2s;
   text-align: left;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 35px;
 }
 
 .search{
-  width: 10vw;
+  width: 20px;
+  height: 20px;
   margin: auto;
-  margin-left: 15px;
   font-size: 20px;
   display: flex;
-  color: #333;
+  color: rgba(0,0,0,0.5);
+  position: absolute;
+  left: 270px;
+  top: 0;bottom: 0;
+  margin: auto;
+  z-index: 2;
 }
 .search span {
   margin: auto;
 }
 
-@media only screen and (max-width: 410px) {
-  .react-autosuggest__container{
-    width: 90vw;
-  }
-  .react-autosuggest__input{
-    padding: 0;
-    width: 100%;
-    margin: 0 auto;
-  }
-  .react-autosuggest__input--focused{
-    border: 0;
-  }
-}
-
 .react-autosuggest__input--focused {
   box-sizing: border-box;
-  border-color: rgba(0,0,0, 0.5);
   outline: none;
-}
-
-.react-autosuggest__input--open {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border: 1px solid rgba(0,0,0,0.5);
+  transition: 0.2s;
+  border-radius: 35px;
 }
 
 .react-autosuggest__suggestions-container {
@@ -79,21 +66,52 @@
   position: absolute;
   top: 100%;
   width: 100%;
-  border: 1px solid rgba(33, 32, 37, 0.5);
-  background-color: RGBA(33, 32, 37, 0.8);
   font-family: Helvetica, sans-serif;
   font-weight: 300;
   font-size: 16px;
   z-index: 2;
+  background: black;
 }
 
 .react-autosuggest__suggestions-list {
   margin: 0;
   padding: 0;
   list-style-type: none;
-  max-height: 250px;
+  height: 250px;
   overflow-y: scroll;
 }
+
+@media only screen and (max-width: 410px) {
+  .react-autosuggest__container{
+    width: 100%;
+  }
+  .react-autosuggest__input{
+    width: 80%;
+
+  }
+  .react-autosuggest__input--focused{
+  }
+  .react-autosuggest__suggestions-container--open {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 80px;
+    background: black;
+    overflow-y: scroll;
+  }
+  .react-autosuggest__suggestions-list {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .search{
+    left: 70%;
+  }
+}
+
 
 .react-autosuggest__suggestion {
   cursor: pointer;
